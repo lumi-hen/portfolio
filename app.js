@@ -1,4 +1,6 @@
 // Require
+const bunyan = require('bunyan');
+const compression = require('compression');
 const express = require("express");
 const helmet = require("helmet");
 const path = require("path");
@@ -70,13 +72,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Parse application/json
 app.use(bodyParser.json());
 
-// LocalStorage saving objects and arrays
-Storage.prototype.setObj = function(key, obj) {
-        return this.setItem(key, JSON.stringify(obj))
-    }
-Storage.prototype.getObj = function(key) {
-        return JSON.parse(this.getItem(key))
-    }
+// // LocalStorage saving objects and arrays
+// Storage.prototype.setObj = function(key, obj) {
+//         return this.setItem(key, JSON.stringify(obj))
+//     }
+// Storage.prototype.getObj = function(key) {
+//         return JSON.parse(this.getItem(key))
+//     }
 
 // Express Session Middleware
 app.use(session ({
@@ -89,6 +91,18 @@ app.use(session ({
 app.use(helmet({
   contentSecurityPolicy: false,
 }));
+
+// Compression
+app.use(compression());
+
+// Logging
+// const loggers = {
+//     development: () => bunyan.createLogger({name: "development", level: "debug"}),
+//     production: () => bunyan.createLogger({name: "production", level: "info"}),
+//     test: () => bunyan.createLogger({name: "test", level: "fatal"}),
+// }
+
+
 
 // Express fileupload middleware
 app.use(fileUpload());

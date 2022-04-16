@@ -9,29 +9,29 @@ router.get('/add/:product',(req,res,next) =>{
     Product.findOne({slug: slug}, (err, product) => {
         if(err) console.log(err);
 
-        // if(typeof req.session.cart =="undefined") {
-        //     req.session.cart = [];
-        //     req.session.cart.push({
-        //         title: slug,
-        //         quantity: 1,
-        //         price: parseFloat(product.price).toFixed(2),
-        //         image: "/product_images/" + product._id + '/' + product.image,
-        //     });
+        if(typeof req.session.cart =="undefined") {
+            req.session.cart = [];
+            req.session.cart.push({
+                title: slug,
+                quantity: 1,
+                price: parseFloat(product.price).toFixed(2),
+                image: "/product_images/" + product._id + '/' + product.image,
+            });
 
-        if (typeof window !== 'undefined') {
-            // Perform localStorage action
-            let lsCart = [];
-            if(localStorage.getObj('lscart')) {
-                lsCart = localStorage.getItem('lscart');
+        // if (typeof window !== 'undefined') {
+        //     // Perform localStorage action
+        //     let lsCart = [];
+        //     if(localStorage.getObj('lscart')) {
+        //         lsCart = localStorage.getItem('lscart');
     
-                lsCart.push({
-                    title: slug,
-                    quantity: 1,
-                    price: parseFloat(product.price).toFixed(2),
-                    image: "/product_images/" + product._id + '/' + product.image,
-                });
-                localStorage.setObj('lscart', lsCart);
-          }
+        //         lsCart.push({
+        //             title: slug,
+        //             quantity: 1,
+        //             price: parseFloat(product.price).toFixed(2),
+        //             image: "/product_images/" + product._id + '/' + product.image,
+        //         });
+        //         localStorage.setObj('lscart', lsCart);
+        //   }
 
         } else {
 
