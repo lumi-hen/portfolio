@@ -1,0 +1,149 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SWIPER CSS -->
+    <link rel="stylesheet" href="/css/swiper.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/cart.css">
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Fontawesome -->
+    <!-- <script src="https://kit.fontawesome.com/eeeb79369f.js" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Portfolio | Lumi Hennig</title>
+  </head>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title><%= title %></title> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css" />
+ 
+    <link rel="stylesheet" href="/css/style.css">
+<!-- </head>  -->
+
+  <body>
+    <div class="ajaxbg">
+      <div class="ajaxinner">
+        <h3>You are now being redirected to PayPal...</h3>
+        <img src="/images/ajax-loader.gif" alt=""/>
+      </div>
+    </div>
+
+    <!-- HEADER -->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="/" class="nav__logo">Lumi</a>
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list grid">
+
+          <li class="nav__item">
+            <a href="/#home" class="nav__link">
+              <i class="fas fa-home nav__icon"></i> Home
+            </a>
+          </li>
+
+          <li class="nav__item">
+            <a href="/#services" class="nav__link">
+              <i class="fas fa-briefcase nav__icon"></i> Services
+            </a>
+          </li>
+
+          <li class="nav__item">
+            <a href="/#shop" class="nav__link">
+              <i class="fas fa-file-alt nav__icon"></i> Shop
+            </a>
+          </li>        
+
+          <li class="nav__item">
+            <a href="/#portfolio" class="nav__link">
+              <i class="fas fa-palette nav__icon"></i> Portfolio
+            </a>
+          </li>
+
+          <li class="nav__item">
+            <a href="/#about" class="nav__link">
+              <i class="far fa-user nav__icon"></i> About
+            </a>
+          </li>
+
+          <li class="nav__item">
+            <a href="/#contact" class="nav__link">
+              <i class="far fa-envelope nav__icon"></i> Contact
+            </a>
+          </li>
+
+          <% if (user && user.admin == 1) { %>
+            <li class="nav__item">
+              <a class="nav__link" href="/admin/pages">
+                <i class="fa-solid fa-hammer nav__icon"></i> Admin Area</a>
+            </li>
+          <% } %>
+          
+        </ul>
+
+        <i class="fas fa-times nav__close" id="nav-close"></i>
+
+
+      </div>
+        <!-- Theme change button  -->
+        <i class="far fa-moon change-theme" id="theme-button"></i>
+
+        <!-- Shopping cart -->
+        <a href="/cart/checkout" class="cart__icon active-link"><i class="fa-lg fa-solid fa-cart-shopping" id="cart-icon"></i></a>
+
+        <!-- Nav toggle -->
+        <div class="nav__toggle" id="nav-toggle">
+          <i class="fas fa-ellipsis-h"></i>
+        </div>
+
+    </nav>
+  </header>
+
+          <!-- <% pages.forEach(page => { %>
+            <% if (page.slug == "home") { %>
+              <li><a href="/"><%= page.title %> </a></li>
+            <% } else { %>
+              <li><a href="/<%= page.slug %>"><%= page.title %> </a></li>
+            <% } %> 
+            
+          <% }) %>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/cart/checkout">My Cart [
+            <% if (typeof cart !=="undefined") { %>
+              <%= cart.length %> 
+            <% } else { %>
+              0
+            <% } %>
+            ]
+          </a>
+        </li>
+
+        <% if (user && user.admin == 1) { %>
+          <li><a href="/admin/pages">Admin Area</a></li>
+        <% } %> 
+        </ul>
+      </div>/.nav-collapse -->
+    </div>
+
+  <div class="container">
+    <%- messages('messages', locals) %>
+
+    <% if(errors) {%>
+      <% errors.forEach(function(error) { %> 
+       <div class="alert alert-danger">
+         <%= error.msg %>
+       </div>
+     <%  }); %>
+    <% } %>
+  </div>
+

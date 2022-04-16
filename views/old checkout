@@ -1,0 +1,57 @@
+  <h1 class="page-title">My cart</h1>
+  <br><br>
+  <table class="table table-striped align-middle">
+    <tr>
+      <th>Image</th>
+      <th>Title</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th></th>
+      <th>Subtotal</th>
+    </tr>
+    <% var total = 0; %> 
+    <% cart.forEach(product => { %>
+      <% let sub = parseFloat(product.quantity * product.price).toFixed(2) %> 
+      <% total += +sub %> 
+      <tr>
+        <td><img class="cpi" src="<%= product.image %>" alt=""></td>
+        <td><%= product.title %></td>
+        <td>$<%= product.price %></td>
+        <td><%= product.quantity %></td>
+        <td>
+          <a href="/cart/update/<%= product.title %>?action=add">+</a>&nbsp;
+          <a href="/cart/update/<%= product.title %>?action=remove">-</a>&nbsp;
+          <a href="/cart/update/<%= product.title %>?action=clear">Clear</a>&nbsp;</td>
+        <td>$<%= sub %> </td>
+      </tr>
+    <% }) %>
+    <tr>
+      <td colspan="6" align="right"><b>Total: </b>$<%= parseFloat(total).toFixed(2) %></td>
+    </tr>
+    <tr>
+      <td colspan="5" align="right">
+        <a class="clearcart btn btn-danger" href="/cart/clear">Clear cart</a>
+      </td>
+
+      <td colspan="5" align="right">
+        <a class="btn btn-primary buynow" href="#">Buy now</a>
+      </td>
+    </tr>
+  </table>
+
+  <input type="hidden" name="cmd" value="_ext-enter">
+  <form class="pp" action="https://www.sandbox.paypal.com/us/cgi-bin/webscr" method="post">
+   <input type="hidden" name="cmd" value="_cart">
+   <input type="hidden" name="upload" value="1">
+   <input type="hidden" name="business" value="sb-7xqb4313068344@business.example.com">
+   <% let num = 0; %> 
+   <% cart.forEach(p => { %>
+    <% num++ %>
+    <input type="hidden" name="item_name_<%= num %>" value="<%= p.title %>"> 
+    <input type="hidden" name="amount_<%= num %>" value="<%= p.price %>">
+    <input type="hidden" name="quantity_<%= num %>" value="<%= p.quantity %>">
+   <% }) %>
+   <input type="hidden" name="currency_code" value="EUR">
+   <input type="hidden" name="amount" value="<%= total %>">
+   <input type="image" name="submit" alt="">
+  </form>

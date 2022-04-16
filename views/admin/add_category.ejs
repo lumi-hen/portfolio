@@ -1,0 +1,25 @@
+<%- include('../layouts/adminheader.ejs') %>
+
+<h2 class="page-title">
+    Add a Category!
+</h2>
+
+<a href="/admin/categories" class="btn btn-primary">Back to all categories !</a>
+
+<br>
+<br>
+<form method="POST" action="/admin/categories/add-category">
+
+<div class="form-group">
+    <label for="">Title</label>
+    <input type="text" class="form-control" name="title"  placeholder="Title" value="<%= title %>"> 
+</div>
+
+
+<button class="btn btn-default">submit</button>
+
+
+</form>
+
+<%- include('../layouts/adminfooter.ejs') %>
+
