@@ -24,7 +24,7 @@ const Page = require('./models/page');
 const Category = require('./models/category');
 
 // Connect to db
-mongoose.connect(config.database, {
+mongoose.connect(config.localhost, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
