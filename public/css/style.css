@@ -510,6 +510,10 @@ input[value] {
   transform: translateX(0.25rem);
 }
 
+.add__button:hover .button__icon {
+  transform: scale(1.1);
+}
+
 /* SERVICES */
 .services__container {
   gap: 1.5rem;

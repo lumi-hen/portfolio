@@ -10,25 +10,26 @@
         <div class="table__product">
           <img class="product__image table__content" src="<%= product.image %>" alt="">
           <div class="product__info">
-            <p class="product__title"><%= product.title %></p>
+            <p class="product__title"><%= product.title.charAt(0).toUpperCase() + product.title.slice(1) %></p>
 
 
           <div class="quantity">
             <div class="product__quantity"><p>Quantity: <span class="quantity__num"><%= product.quantity %></span></p></div>
             <div class="buttons">
-              <a class="button--flex button button--small modify" href="/cart/update/<%= product.title %>?action=add">+</a>
-              <a class="button--flex button button--small modify" href="/cart/update/<%= product.title %>?action=remove">-</a>
-              <a class="button--flex button button--small modify" href="/cart/update/<%= product.title %>?action=clear">Clear</a>
+              <a class="button--flex button button--small modify" href="/cart/update/<%= product.title %>?action=add"><i class="fa-solid fa-plus"></i></a>
+              <a class="button--flex button button--small modify" href="/cart/update/<%= product.title %>?action=remove"><i class="fa-solid fa-minus"></i></a>
+              <a class="button--flex button button--small clear__product" href="/cart/update/<%= product.title %>?action=clear"><p class="clear__text">Clear</p></a>
             </div>
           </div>
           <div class="subtotal">
-            <p class="product__subtotal"><%= sub %></p>
+            <p>Subtotal: </p>
+            <p class="product__subtotal"><%= sub %>&euro;</p>
           </div>
           </div>
         </div>
       <% }) %>
       <div class="total">
-        <p>Total: <%= parseFloat(total).toFixed(2) %></p>
+        <p>Total: <%= parseFloat(total).toFixed(2) %>&euro;</p>
       </div>
 
       <div class="checkout__buttons">
