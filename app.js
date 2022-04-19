@@ -24,7 +24,7 @@ const Page = require('./models/page');
 const Category = require('./models/category');
 
 // Connect to db
-mongoose.connect(config.localhost.localdb, {
+mongoose.connect(config.database, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -180,7 +180,10 @@ app.get('*', function(req, res) {
 
 
 // Listen for incoming activity
-const port = 3000;
-app.listen(port, () => {
-  console.log("Server started on port: " + port);
+const port = {
+    localhost: 3000,
+    server: 80
+};
+app.listen(port.server, () => {
+  console.log("Server started on port: " + port.server);
 });
