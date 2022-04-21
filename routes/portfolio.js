@@ -13,5 +13,22 @@ router.get('/', (req,res,next) =>{
   }); 
 });
 
+router.get('/product-details/:product', (req, res, next) => {
+  const slug = req.params.product;
+
+  Product.findOne({slug: slug}, (err, product) => {
+    if(err) console.log(err);
+
+    res.render('product-details', {
+      product,
+      image: product.image,
+      id: product._id,
+      title: product.title,
+      desc: product.desc,
+      price: product.price
+    });
+  });
+});
+
 // Exports
 module.exports = router;

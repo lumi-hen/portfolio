@@ -1,0 +1,30 @@
+.product__container {
+  margin: 0;
+}
+
+.product__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.product__img {
+  width: 200px;
+  border-radius: 0.2rem;
+  margin: 2rem 0;
+}
+
+.product__description {
+  margin-bottom: 1rem;
+}
+
+.add__button {
+  width: 100%;
+  justify-content: center;
+}
+
+a.add__button .button__icon {
+  display: inline-block;
+}

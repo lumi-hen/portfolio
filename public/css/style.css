@@ -18,6 +18,7 @@
   --container-clr: #fff;
   --scroll-bar-clr: hsl(var(--hue-clr), 12%, 90%);
   --scroll-thumb-clr: hsl(var(--hue-clr), 12%, 80%);
+  --swiper-bullet: hsl(var(--hue-clr), 12% 90%);
 
   /* Font and typo */
   --body-font: "Montserrat", sans-serif;
@@ -74,6 +75,7 @@ body.dark-theme {
   --container-clr: hsl(var(--hue-clr), 29%, 16%);
   --scroll-bar-clr: hsl(var(--hue-clr), 12%, 48%);
   --scroll-thumb-clr: hsl(var(--hue-clr), 12%, 36%);
+  --swiper-bullet: hsl(var(--hue-clr), 12%, 35%%);
 }
 
 /* Button Dark/Light */
@@ -496,13 +498,13 @@ input[value] {
 
 .shop__buttons {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  gap: 5%;
 }
 
 .view__more,
 .add__button {
-  justify-content: center;
   cursor: pointer;
 }
 
@@ -619,12 +621,16 @@ input[value] {
 }
 
 .portfolio__content {
-  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5%;
 }
 
 .portfolio__img {
   width: 265px;
-  border-radius: 0.5rem;
+  border-radius: 0.2rem;
   justify-self: center;
   /* border: solid 2px var(--first-clr);
   padding: 0.5rem; */
@@ -652,6 +658,7 @@ input[value] {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: var(--mb-1-5);
 }
 
 .swiper-portfolio-icon {
@@ -667,18 +674,20 @@ input[value] {
   right: -0.5rem;
 }
 
-.swiper-pagination-bullets.swiper-pagination-horizontal {
-  bottom: -2rem !important;
-}
-
-.swiper-pagination-bullets-active {
+/* .swiper-pagination-bullets-active {
   background-color: var(--first-clr);
-}
+} */
 
 .swiper-button-prev,
 .swiper-button-next,
 .swiper-pagination-bullet {
+  top: 40% !important;
   outline: none;
+}
+
+.swiper-horizontal > .swiper-pagination-bullets {
+  position: relative;
+  margin-top: var(--mb-3);
 }
 
 .left-right__buttons {
@@ -876,7 +885,17 @@ input:-webkit-autofill {
 
   .add__button,
   .view__more {
-    padding: 0.5rem 0.75rem;
+    padding: 0.75rem 0.6rem;
+    font-size: var(--small-font);
+  }
+
+  .portfolio__img {
+    width: 175px;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    top: 30% !important;
   }
 
   .skills__title {
@@ -895,6 +914,13 @@ input:-webkit-autofill {
   }
 }
 
+@media  screen and (max-width: 400px) {
+  a.view__more .button__icon,
+  a.add__button .button__icon {
+    display: none;
+  }
+}
+
 /* Medium devices */
 @media screen and (min-width: 540px) {
   .home__content {
@@ -906,6 +932,17 @@ input:-webkit-autofill {
   .home__img {
     order: 1;
     justify-self: center;
+  }
+
+  .shop__buttons {
+    gap: 1rem;
+    flex-direction: column;
+  }
+
+  .add__button,
+  .view__more {
+    width: 100%;
+    justify-content: center;
   }
 
   .about__container,
@@ -981,18 +1018,25 @@ input:-webkit-autofill {
   .shop__container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    gap: 2rem;
   }
 
-  .shop__buttons {
-    gap: 1rem;
-    flex-direction: column;
-    justify-content: center;
+  .portfolio__content {
+    flex-direction: row;
+    justify-content: center
   }
 
-  .add__button,
-  .view__more {
-    text-align: center;
+  .portfolio__img {
+    margin-right: var(--mb-1-5);
+  }
+
+  .portfolio__data {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .swiper-horizontal > .swiper-pagination-bullets {
+    margin-top: var(--mb-3);
   }
 
   .about__container {
@@ -1032,10 +1076,6 @@ input:-webkit-autofill {
   .portfolio__img {
     width: 320px;
   }
-  .portfolio__content {
-    align-items: center;
-    padding: 0 0 0 4.5rem;
-  }
 
   .footer__container {
     grid-template-columns: repeat(3, 1fr);
@@ -1055,6 +1095,8 @@ input:-webkit-autofill {
   }
 }
 
+
+
 /* Large devices */
 @media screen and (min-width: 1024px) {
   .header,
@@ -1070,9 +1112,6 @@ input:-webkit-autofill {
     transform: translateX(-6rem);
   }
 
-  .portfolio__content {
-    column-gap: 5rem;
-  }
   .swiper-portfolio-icon {
     font-size: 3.5rem;
   }
@@ -1084,10 +1123,6 @@ input:-webkit-autofill {
   }
   .swiper-horizontal > .swiper-pagination-bullets {
     padding-top: -4.5rem;
-  }
-
-  .portfolio__content {
-    padding: 0 0 0 4.5rem;
   }
 
   .contact__inputs {

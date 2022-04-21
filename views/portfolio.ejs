@@ -290,7 +290,7 @@
                     Add to cart <i class="fa-solid fa-cart-plus button__icon"></i>
                   </a>
                   
-                  <a class="button--flex button button--small view__more" href="/product-details">
+                  <a class="button--flex button button--small view__more" href="/product-details/<%= product.slug %> ">
                     View more <i class="fas fa-arrow-right button__icon"></i>
                   </a>
               </div>
@@ -321,8 +321,7 @@
 
       <div class="portfolio__container container swiper mySwiper">
         <div class="swiper-wrapper">
-          <!-- Portfolio 1 -->
-          <div class="portfolio__content grid swiper-slide">
+          <div class="portfolio__content swiper-slide">
             <img src="/images/Portfolio-1.png" alt="" class="portfolio__img">
 
             <div class="portfolio__data">

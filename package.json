@@ -7,7 +7,7 @@
     "start": "node app.js",
     "dev": "nodemon app.js",
     "startserver": "pm2 start app.js",
-    "stopserver": "pm2 start app.js"
+    "stopserver": "pm2 stop app.js"
   },
   "keywords": [],
   "author": "",
