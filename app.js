@@ -179,10 +179,7 @@ app.get('*', function(req, res) {
 
 
 // Listen for incoming activity
-const port = {
-    localhost: 3000,
-    server: 80
-};
-app.listen(port.server, () => {
-  console.log("Server started on port: " + port.server);
+const port = 3000;
+app.listen(port, () => {
+  console.log("Server started on port: " + port);
 });
