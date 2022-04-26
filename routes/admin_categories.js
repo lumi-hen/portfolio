@@ -6,7 +6,7 @@ const auth = require('../config/auth');
 const isAdmin = auth.isAdmin;
 
 // Get category index
-router.get('/', isAdmin, (req,res,next) =>{
+router.get('/categories', isAdmin, (req,res,next) =>{
     Category.find(function(err, categories) {
         if(err) return console.log(err);
 

@@ -1,4 +1,5 @@
 // Require
+require('dotenv').config();
 const bunyan = require('bunyan');
 const compression = require('compression');
 const express = require("express");
@@ -11,11 +12,14 @@ const session = require('express-session');
 const expressValidator = require('express-validator');
 const fileUpload = require('express-fileupload');
 const passport = require('passport');
+const nodemailer = require('nodemailer');
 // Set routes
 const portfolio = require('./routes/portfolio.js');
+const adminPanel = require('./routes/admin_panel');
 const adminPages = require('./routes/admin_pages');
 const adminCategories = require('./routes/admin_categories');
 const adminProducts = require('./routes/admin_products');
+const adminPortfolio = require('./routes/admin_portfolio');
 const users = require('./routes/users');
 const cart = require('./routes/cart');
 // const pages = require('./routes/pages');
@@ -24,7 +28,7 @@ const Page = require('./models/page');
 const Category = require('./models/category');
 
 // Connect to db
-mongoose.connect(config.database, {
+mongoose.connect(process.env.DO_PORTFOLIO_DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -168,9 +172,11 @@ app.get('*', (req, res, next) => {
 
 // Point to routes
 app.use('/', portfolio);
-app.use('/admin/pages', adminPages);
-app.use('/admin/categories', adminCategories);
-app.use('/admin/products', adminProducts);
+app.use('/admin', adminPanel);
+app.use('/admin', adminPages);
+app.use('/admin', adminCategories);
+app.use('/admin', adminProducts);
+app.use('/admin', adminPortfolio);
 app.use('/users', users);
 app.use('/cart', cart)
 app.get('*', function(req, res) {

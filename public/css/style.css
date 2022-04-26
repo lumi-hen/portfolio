@@ -861,8 +861,6 @@ input:-webkit-autofill {
 }
 
 /* MEDIA QUERIES */
-
-/* Small devices */
 @media screen and (max-width: 350px) {
   .container {
     margin-left: var(--mb-1);
@@ -878,9 +876,6 @@ input:-webkit-autofill {
 
   .home__content {
     grid-template-columns: 0.25fr 3fr;
-  }
-  .home__blob {
-    width: 180px;
   }
 
   .add__button,
@@ -1019,6 +1014,11 @@ input:-webkit-autofill {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
+  }
+
+  .shop__img:hover {
+    transition: 0.3s;
+    transform: scale(1.03);
   }
 
   .portfolio__content {

@@ -8,15 +8,11 @@ const path = require('path');
 const Product=require('../models/product');
 // get Category model
 const Category=require('../models/category');
-const { mkdirpNativeSync } = require('mkdirp/lib/mkdirp-native');
-const { title } = require('process');
-const { runInNewContext } = require('vm');
-const util = require('util');
 const auth = require('../config/auth');
 const isAdmin = auth.isAdmin; 
 
 // Get product index
-router.get('/', isAdmin, (req,res,next) =>{
+router.get('/products', isAdmin, (req,res,next) =>{
     var count;
 
     Product.countDocuments(function(err, c) {

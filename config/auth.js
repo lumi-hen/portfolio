@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 exports.isUser = function(req, res, next) {
   if(req.isAuthenticated()) {
     next();
@@ -8,7 +10,7 @@ exports.isUser = function(req, res, next) {
 }
 
 exports.isAdmin = function(req, res, next) {
-  if(req.isAuthenticated() && res.locals.user.admin == 1) {
+  if(req.isAuthenticated() && res.locals.user.admin == process.env.ADMIN_NUM) {
     next();
   } else {
     req.flash('danger', 'Please log in as admin.');

@@ -1,17 +1,21 @@
 <%- include('./layouts/header.ejs') %>
 <link rel="stylesheet" href="/css/pDetails.css">
-<div class="product__container container">
+<div class="product__container">
   <div class="product__content">
-    <div class="page__title"><h1><%= product.title %></h1></div>
-    <hr>
-    <img class="product__img" src="/product_images/<%= product._id %>/<%= product.image %> " alt="">
-    <div class="product__data">
-      <h4 id="price" class="product__description"><%= parseFloat(product.price).toFixed(2) %>&euro;</h4>
-      <p class="product__description"><%= product.desc %></p>
-
-      <a class="button--flex button button--small add__button" href="/cart/add/<%= product.slug %>">
-        Add to cart <i class="fa-solid fa-cart-plus button__icon"></i>
-      </a>
+  <div class="product__bg">
+      <div class="product__title--details"><h1><%= product.title %></h1></div>
+      <hr>
+      <img class="product__img" src="/product_images/<%= product._id %>/<%= product.image %>" alt="">
+      <div class="product__data">
+        <h4 id="price" class="product__description"><%= parseFloat(product.price).toFixed(2) %>&euro;</h4>
+        <p class="product__description"><%= product.desc %></p>
+  
+        <div>      
+          <a class="button--flex button button--small add__button" href="/cart/add/<%= product.slug %>">
+          Add to cart <i class="fa-solid fa-cart-plus button__icon"></i>
+          </a>
+        </div>
+    </div>
   </div>
   </div>
 </div>

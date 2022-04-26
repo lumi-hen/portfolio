@@ -6,7 +6,7 @@ const auth = require('../config/auth');
 const isAdmin = auth.isAdmin;
 
 // Get pages index
-router.get('/', isAdmin, (req,res,next) =>{
+router.get('/pages', isAdmin, (req,res,next) =>{
     Page.find({}).sort({sorting: 1}).exec((err, pages) => {
         res.render('admin/pages', {
             pages: pages,
