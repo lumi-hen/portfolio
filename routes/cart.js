@@ -55,8 +55,8 @@ router.get('/add/:product',(req,res,next) =>{
                 });
             }
         }
-
-        res.redirect('/portfolio');
+        
+        res.sendStatus(204);
         
     }); 
 });
