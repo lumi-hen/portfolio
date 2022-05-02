@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Product = require('../models/product');
 const nodemailer = require('nodemailer');
-const { response } = require('express');
 require('dotenv').config();
 
 

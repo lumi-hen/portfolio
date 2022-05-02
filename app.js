@@ -6,13 +6,11 @@ const express = require("express");
 const helmet = require("helmet");
 const path = require("path");
 const mongoose = require("mongoose");
-const config = require('./config/database');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const expressValidator = require('express-validator');
 const fileUpload = require('express-fileupload');
 const passport = require('passport');
-const nodemailer = require('nodemailer');
 // Set routes
 const portfolio = require('./routes/portfolio.js');
 const adminPanel = require('./routes/admin_panel');
