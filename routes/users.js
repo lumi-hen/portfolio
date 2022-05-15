@@ -73,19 +73,22 @@ const { rawListeners } = require('../models/user');
 
 // Get login
 router.get('/login',(req,res,next) =>{
-    if(res.locals.user) {
-        res.redirect('/');
-    }
 
-    res.render('login', {
-        title: 'Log in',
+
+	if(req.isAuthenticated()) {
+		res.redirect("/");
+	} else {
+		res.render('login', {
+        title: 'Login',
     });
+
+	}
 });
 
 // Post login
 router.post('/login',(req,res,next) =>{
     passport.authenticate('local', {
-        successRedirect: '/admin/pages',
+        successRedirect: '/admin',
         failureRedirect: '/users/login',
         failureFlash: true
     })(req, res, next);

@@ -957,6 +957,12 @@ input:-webkit-autofill {
     font-size: var(--normal-font);
   }
 
+  @media screen and (max-width: 325px) {
+    .services {
+      margin-top: 6rem;
+    }
+  }
+
   .services__container {
     grid-template-columns: max-content;
     justify-content: center;

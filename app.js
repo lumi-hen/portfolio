@@ -26,7 +26,7 @@ const Page = require('./models/page');
 const Category = require('./models/category');
 
 // Connect to db
-mongoose.connect(process.env.LOCAL_PORTFOLIO_DB, {
+mongoose.connect(process.env.DO_LOCAL_PORTFOLIO_DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
