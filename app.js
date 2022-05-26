@@ -14,7 +14,6 @@ const passport = require('passport');
 // Set routes
 const portfolio = require('./routes/portfolio.js');
 const adminPanel = require('./routes/admin_panel');
-const adminPages = require('./routes/admin_pages');
 const adminCategories = require('./routes/admin_categories');
 const adminProducts = require('./routes/admin_products');
 const adminPortfolio = require('./routes/admin_portfolio');
@@ -22,7 +21,6 @@ const users = require('./routes/users');
 const cart = require('./routes/cart');
 // const pages = require('./routes/pages');
 // Get Models
-const Page = require('./models/page');
 const Category = require('./models/category');
 
 // Connect to db
@@ -49,15 +47,6 @@ app.use(express.json())
 // Set global error variable
 
 app.locals.errors = null;
-
-// Get all Pages to pass to header.ejs
-Page.find({}).sort({sorting: 1}).exec((err, pages) => {
-    if(err) {
-        console.log(err)
-    } else {
-        app.locals.pages = pages;
-    }
-});
 
 // Get all catgories to pass to header.ejs
 Category.find((err, categories) => {
@@ -171,14 +160,13 @@ app.get('*', (req, res, next) => {
 // Point to routes
 app.use('/', portfolio);
 app.use('/admin', adminPanel);
-app.use('/admin', adminPages);
 app.use('/admin', adminCategories);
 app.use('/admin', adminProducts);
 app.use('/admin', adminPortfolio);
 app.use('/users', users);
-app.use('/cart', cart)
+app.use('/cart', cart);
 app.get('*', function(req, res) {
-    res.redirect('/');
+   res.redirect('/');
 });
 
 

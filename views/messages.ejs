@@ -1,10 +1,19 @@
-
-    <% Object.keys(messages).forEach(function (type) { %>
+   <% Object.keys(messages).forEach(function (type) { %>
       
-         <div class="alert alert-<%= type %>">
-      <% messages[type].forEach(function (message) { %>
-        <%= message %>
-      <% }) %>
+    <div class="shop__modal" id="shop__modal">
+      <div class="shop__modal-content">
+        <!-- <i class="fas fa-times shop__modal-close"></i> -->
+
+        <ul class="shop__modal-shop grid">
+          <li class="shop__modal-service">
+            <i class="far fa-check-circle shop__modal-icon"></i>
+            <% messages[type].forEach(function (message) { %>
+              <p><%= message %></p>
+            <% }) %>
+          </li>
+        </ul>
+      </div>
+    </div>
     </div> 
       
 

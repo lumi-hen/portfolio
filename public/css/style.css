@@ -185,6 +185,10 @@ input[value] {
   background: var(--body-clr);
 }
 
+.fullvp__container {
+    height: 100vh;
+}
+
 /* NAV */
 .nav {
   max-width: 968px;

@@ -15,11 +15,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- Fontawesome -->
     <!-- <script src="https://kit.fontawesome.com/eeeb79369f.js" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Fancybox -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>Portfolio | Lumi Hennig</title>
   </head>
 
@@ -101,24 +99,6 @@
 
     </nav>
   </header>
-
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="/cart/checkout">My Cart [
-            <% if (typeof cart !=="undefined") { %>
-              <%= cart.length %> 
-            <% } else { %>
-              0
-            <% } %>
-            ]
-          </a>
-        </li>
-
-        <% if (user && user.admin == 1) { %>
-          <li><a href="/admin/pages">Admin Area</a></li>
-        <% } %> 
-        </ul>
-      </div>
-    </div>
 
   <div class="container">
     <%- messages('messages', locals) %>

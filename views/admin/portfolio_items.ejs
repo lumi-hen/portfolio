@@ -1,0 +1,44 @@
+<%- include('../layouts/adminheader.ejs') %>
+
+
+<div class="portfolio section">
+  <h2 class="section__title categories__title"><%= title %></h2>
+  <span class="section__subtitle"></span>
+  <hr>
+  <a href="/admin/portfolio/add-item" class="button button--flex add__button--admin">Add a new portfolio item</a>
+
+	<div class="portfolio__container grid">
+        <div class="table__title--portfolio">
+          <span>Title</span>
+          <span>Category</span>
+          <span>Image</span>
+          <span>Edit</span> 
+          <span>Delete</span>
+        </div>
+
+        <div class="table__content">
+          <%  items.forEach(function(item) { %>
+            <div class="admin__portfolio">
+              <span><%= item.title %></span>
+              <span><%= item.category %></span>
+              <span>
+                <% if (item.image === "") { %>
+                <img id="noImage" src="/images/no_image.png">
+                <% } else { %>
+                <img id="uploadedImage"src="/portfolio_images/<%= item._id %>/<%= item.image %>">
+                <% } %> 
+              </span>
+              <span><a class="button button--flex" href="/admin/portfolio/edit-item/<%= item._id %>">Edit</a></span>
+              <span><a class="confirmDeletion button button--flex" href="/admin/portfolio/delete-item/<%= item._id %>">Delete</a></span>
+            </div>
+            <% }); %> 
+        </div>
+	</div>
+</div>
+</div>
+
+
+
+<%- include('../layouts/footer.ejs') %>
+
+

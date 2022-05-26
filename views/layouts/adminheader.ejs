@@ -2,50 +2,87 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Admin Area</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/adminstyle.css">
+    <link rel="stylesheet" href="/css/login.css"> 
+    <link rel="stylesheet" href="/css/cart.css">
+    <!-- SWIPER CSS -->
+    <link rel="stylesheet" href="/css/swiper.css">
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Fontawesome -->
+    <!-- <script src="https://kit.fontawesome.com/eeeb79369f.js" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-    <!-- Dropzone -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/basic.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.css"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.js"></script>
-    
   </head>
 
-  <body>
-
-    <nav class="navbar navbar-inverse">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/" target="_blank" >Shopping Cart</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="/admin/pages">Pages</a></li>
-            <li><a href="/admin/categories">Categories</a></li>
-            <li><a href="/admin/products">Products</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="/portfolio">Portfolio</a></li>
-            <li><a href="/users/logout">Logout</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
+ <body>
+    <div class="ajaxbg">
+      <div class="ajaxinner">
+        <h3>You are now being redirected to PayPal...</h3>
+        <img src="/images/ajax-loader.gif" alt=""/>
       </div>
-    </nav>
+    </div>
 
-    <div class="container">
+    <!-- HEADER -->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="/" class="nav__logo">Lumi</a>
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list grid">
+
+          <li class="nav__item">
+            <a href="/admin/categories" class="nav__link">
+              <i class="fas fa-briefcase nav__icon"></i> Categories 
+            </a>
+          </li>
+
+          <li class="nav__item">
+            <a href="/admin/products" class="nav__link">
+              <i class="fas fa-file-alt nav__icon"></i> Products 
+            </a>
+          </li>        
+
+          <li class="nav__item">
+            <a href="/admin/portfolio" class="nav__link">
+              <i class="fas fa-palette nav__icon"></i> Portfolio
+            </a>
+          </li>
+
+          <li class="nav__item">
+            <a href="/users/logout" class="nav__link">
+              Logout
+            </a>
+          </li>
+          
+        </ul>
+
+        <i class="fas fa-times nav__close" id="nav-close"></i>
+
+
+      </div>
+        <!-- Theme change button  -->
+        <i class="far fa-moon change-theme" id="theme-button"></i>
+
+        <!-- Shopping cart -->
+        <a href="/cart/checkout" class="cart__icon"><i class="fa-lg fa-solid fa-cart-shopping" id="cart-icon"></i></a>
+
+        <!-- Nav toggle -->
+        <div class="nav__toggle" id="nav-toggle">
+          <i class="fas fa-ellipsis-h"></i>
+        </div>
+
+    </nav>
+  </header>
+
+  <div class="container">
   <%- messages('messages', locals) %> 
 
   <% if(errors) {%>

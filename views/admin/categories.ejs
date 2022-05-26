@@ -1,32 +1,28 @@
 <%- include('../layouts/adminheader.ejs') %>
 
-<h2 class="page-title">
-   Categories
-</h2>
+<div class="categories section">
+	<h2 class="section__title categories__title"><%= title %></h2>
+    <span class="section__subtitle"></span>
+    <hr>
+    <a href="/admin/categories/add-category" class="button button--flex add__button--admin">Add a new category</a>
+	<div class="category__container grid">
+        <div class="table__title--cat">
+           <p>Category</p> 
+           <p>Edit</p> 
+           <p>Delete</p> 
+        </div>
 
-<a href="/admin/categories/add-category" class="btn btn-primary">Add a new category</a>
+        <div class="table__content">
+            <% categories.forEach(function(cat) { %>
+                <div class="category">
+                    <div><%= cat.title %></div>
+                    <div><a class="button button--flex" href="/admin/categories/edit-category/<%= cat._id %> ">Edit</a></div>
+                    <div><a class="confirmDeletion button button--flex" href="/admin/categories/delete-category/<%= cat._id %>">Delete<a></div>
+                </div>
+          <% }); %> 
+        </div>
+	</div>
+</div>
 
-<br>
-<br>
-
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Category</th>
-            <th>Edit</th>
-            <th>Delete</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% categories.forEach(function(cat) { %>
-            <tr>
-              <td><%= cat.title %></td>
-              <td><a href="/admin/categories/edit-category/<%= cat._id %> ">Edit</a></td>
-              <td><a class="confirmDeletion" href="/admin/categories/delete-category/<%= cat._id %>">Delete<a></td>
-              <% }); %> 
-            </tr>
-    </tbody>
-</table>
-
-<%- include('../layouts/adminfooter.ejs') %>
+<%- include('../layouts/footer.ejs') %>
 

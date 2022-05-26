@@ -2,18 +2,38 @@ const express = require('express');
 const router = express.Router();
 const Product = require('../models/product');
 const nodemailer = require('nodemailer');
+const Portfolio = require('../models/portfolio');
+const mongoose = require("mongoose");
+const db = mongoose.connection;
 require('dotenv').config();
 
 
 // Get all products
-router.get('/', (req,res,next) =>{
-  Product.find((err, products) => {
-      if(err) console.log(err);
-
-      res.render('portfolio',{
-          products: products,
-      });
-  }); 
+router.get('/', (req, res) => {  
+  db.collection("products")
+  .find()
+  .toArray((err, products) => {
+    if (err) {
+      console.log(err);
+    } else {
+      // In the callback of the first query, so it will
+      // execute 2nd query, only when the first one is done
+      db.collection("portfolios")
+        .find()
+        .toArray((err, items) => {
+          if (err) {
+            console.log(err);
+          } else {
+            // In the callback of the 2nd query, send the response
+            // here since both data are at hand
+            res.render('portfolio', {
+              products,
+              items,
+            });
+          }
+        });
+    }
+  })
 });
 
 router.get('/product-details/:product', (req, res, next) => {
@@ -31,7 +51,23 @@ router.get('/product-details/:product', (req, res, next) => {
       price: product.price
     });
   });
-});
+}); 
+
+router.get('/portfolio/view-details/:item', (req, res, next) => {
+  const slug = req.params.item;
+
+  Portfolio.findOne({slug: slug}, (err, item) => {
+    if(err) console.log(err);
+
+    res.render('view_details', {
+      item,
+      image: item.image,
+      id: item._id,
+      title: item.title,
+      desc: item.desc,
+    });
+  });
+}); 
 
 router.post('/send-message', async (req, res) => {
 

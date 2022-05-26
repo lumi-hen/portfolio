@@ -1,9 +1,15 @@
-.login__title {
-	margin-bottom: 4rem;
+.login {
+	display: flex;
+	flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	height: 100vh;
 }
+
 
 .login__container {
 	row-gap: 3rem;
+	margin-top: 2rem;
 }
 
 .login__content {
@@ -31,12 +37,7 @@
 .login__button {
 	width: 100%;
 	justify-content: center;
+	cursor: pointer;
+	font-size: inherit;
 }
 
-.login {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	height: 100vh;
-}

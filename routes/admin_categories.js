@@ -12,17 +12,18 @@ router.get('/categories', isAdmin, (req,res,next) =>{
 
         res.render('admin/categories', {
             categories,
+            title: "Categories"
         })
     });
 });
 
 // get add category
 
-router.get('/add-category', isAdmin,(req,res,next) =>{
-    var title="";
+router.get('/categories/add-category', isAdmin,(req,res,next) =>{
+    let title="";
 
     res.render('admin/add_category',{
-        title,
+        title: "Add a new category",
 
     });
 });
@@ -30,13 +31,13 @@ router.get('/add-category', isAdmin,(req,res,next) =>{
 
 
 // POST add category
-router.post('/add-category',(req,res,next) =>{
+router.post('/categories/add-category',(req,res,next) =>{
     req.checkBody('title','Title must have a value').notEmpty();
 
-    var title=req.body.title;
-    var slug=title.replace(/\s+/g,'-').toLowerCase();
+    let title=req.body.title;
+    let slug=title.replace(/\s+/g,'-').toLowerCase();
     
-    var errors=req.validationErrors();
+    let errors=req.validationErrors();
     if(errors)
     {
         res.render('../views/admin/add_category',{
@@ -53,7 +54,7 @@ router.post('/add-category',(req,res,next) =>{
             });
 
          } else {
-             var category=new Category({
+             let category=new Category({
                  title,
                  slug,
              });
@@ -87,7 +88,7 @@ router.post('/add-category',(req,res,next) =>{
 
 // get edit category
 
-router.get('/edit-category/:id', isAdmin,(req,res,next) =>{
+router.get('/categories/edit-category/:id', isAdmin,(req,res,next) =>{
     
     Category.findById(req.params.id, function(err, category) {
         if(err) return console.log(err);
@@ -102,14 +103,14 @@ router.get('/edit-category/:id', isAdmin,(req,res,next) =>{
 });
 
 // POST edit category
-router.post('/edit-category/:id',(req,res,next) =>{
+router.post('/categories//edit-category/:id',(req,res,next) =>{
     req.checkBody('title','Title must have a value').notEmpty();
 
-    var title=req.body.title;
-    var slug=title.replace(/\s+/g,'-').toLowerCase();
-    var id = req.params.id;
+    let title=req.body.title;
+    let slug=title.replace(/\s+/g,'-').toLowerCase();
+    let id = req.params.id;
     
-    var errors=req.validationErrors();
+    let errors=req.validationErrors();
     if(errors)
     {
         res.render('admin/edit_category',{
@@ -157,7 +158,7 @@ router.post('/edit-category/:id',(req,res,next) =>{
 });
 
 // Get delete category & remove
-router.get('/delete-category/:id', isAdmin,(req,res,next) =>{
+router.get('/categories/delete-category/:id', isAdmin,(req,res,next) =>{
     Category.findByIdAndDelete(req.params.id, function(err) {
         if(err) return console.log(err);
 

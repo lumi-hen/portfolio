@@ -1,11 +1,11 @@
 <%- include('./layouts/header.ejs') %>
 <link rel="stylesheet" href="/css/login.css"> 
 
-
-
-<div class="login section">
+<div class="login">
 	<h2 class="section__title login__title"><%= title %></h2>
-	<div class="login__container container grid">
+	<span class="section__subtitle"></span>
+	<hr>
+	<div class="login__container grid">
 		<form method="post" action="/users/login" class="login__form grid">
 			<div class="login__content">
 				<label for="password" class="login__label">Username</label>

@@ -3,7 +3,6 @@ const router=express.Router();
 const mkdirp = require('mkdirp');
 const fs = require('fs-extra');
 const resizeImg = require('resize-img');
-const path = require('path');
 // get Products model
 const Product=require('../models/product');
 // get Category model
@@ -13,31 +12,25 @@ const isAdmin = auth.isAdmin;
 
 // Get product index
 router.get('/products', isAdmin, (req,res,next) =>{
-    var count;
-
-    Product.countDocuments(function(err, c) {
-        count = c;
-
-    });
 
     Product.find(function(err, products) {
         res.render('admin/products', {
             products,
-            count,
+            title: "Products"
         })
     });
 });
 
 // get add product
 
-router.get('/add-product', isAdmin, (req,res,next) =>{
-    var title="";
-    var desc="";
-    var price="";
+router.get('/products/add-product', isAdmin, (req,res,next) =>{
+    let title="";
+    let desc="";
+    let price="";
 
     Category.find(function(err, categories) {
         res.render('admin/add_product',{
-            title,
+            title,                                                                                                                                                                          
             desc,
             categories,
             price,
@@ -49,26 +42,26 @@ router.get('/add-product', isAdmin, (req,res,next) =>{
 
 
 // POST add product
-router.post('/add-product',(req,res,next) =>{
+router.post('/products/add-product',(req,res,next) =>{
     
-    // var imageFile = typeof req.files.image !== "undefined" ? req.files.image.name : "";
-    if(!req.files){ imageFile =""; }
-        if(req.files){
-        var imageFile = typeof(req.files.image) !== "undefined" ? req.files.image.name : "";
-        }
+    let imageFile = typeof req.files.image !== "undefined" ? req.files.image.name : "";
+    // if(!req.files){ imageFile =""; }
+    //     if(req.files){
+    //     let imageFile = typeof(req.files.image) !== "undefined" ? req.files.image.name : "";
+    //     }
 
     req.checkBody('title','Title must have a value').notEmpty();
     req.checkBody('desc','Description must have a value').notEmpty();
     req.checkBody('price','Price must have a value').isDecimal();
     req.checkBody('image', 'You must upload an image').isImage(imageFile);
     
-    var title=req.body.title;
-    var slug=title.replace(/\s+/g,'-').toLowerCase();
-    var desc=req.body.desc;
-    var price=req.body.price;
-    var category=req.body.category;
+    let title=req.body.title;
+    let slug=title.replace(/\s+/g,'-').toLowerCase();
+    let desc=req.body.desc;
+    let price=req.body.price;
+    let category=req.body.category;
     
-    var errors=req.validationErrors();
+    let errors=req.validationErrors();
     if(errors)
     {
         Category.find(function(err, categories) {
@@ -97,9 +90,9 @@ router.post('/add-product',(req,res,next) =>{
             });
 
          } else {
-             var price2 = parseFloat(price).toFixed(2);
+             let price2 = parseFloat(price).toFixed(2);
 
-             var product=new Product({
+             let product=new Product({
                  title,
                  slug,
                  desc,
@@ -120,9 +113,9 @@ router.post('/add-product',(req,res,next) =>{
 
 
                 if(imageFile !== "") {
-                    // var extension = path.extname(imageFile);
-                    var productImage = req.files.image;
-                    var path = 'public/product_images/' + product._id + '/'  + imageFile;
+                    // let extension = path.extname(imageFile);
+                    let productImage = req.files.image;
+                    let path = 'public/product_images/' + product._id + '/'  + imageFile;
                     // console.log(imageFile);
 
                     productImage.mv(path, function(err) {
@@ -144,9 +137,9 @@ router.post('/add-product',(req,res,next) =>{
 
 // get edit product
 
-router.get('/edit-product/:id', isAdmin, (req,res,next) =>{
+router.get('/products/edit-product/:id', isAdmin, (req,res,next) =>{
     
-    var errors;
+    let errors;
 
     if(req.session.errors) errors = req.session.errors;
     req.session.errors = null;
@@ -157,8 +150,8 @@ router.get('/edit-product/:id', isAdmin, (req,res,next) =>{
                 console.log(err);
                 res.redirect('/admin/products');
             } else {
-                var gallerDir = 'public/product_images/' + product._id + '/gallery';
-                var galleryImages = null;
+                let gallerDir = 'public/product_images/' + product._id + '/gallery';
+                let galleryImages = null;
 
                 fs.readdir(gallerDir, (err, files) => {
                     if(err) {
@@ -187,11 +180,11 @@ router.get('/edit-product/:id', isAdmin, (req,res,next) =>{
 });
 
 // POST edit product
-router.post('/edit-product/:id',(req,res,next) =>{
-    // var imageFile = typeof req.files.image !== "undefined" ? req.files.image.name : "";
+router.post('/products/edit-product/:id',(req,res,next) =>{
+    // let imageFile = typeof req.files.image !== "undefined" ? req.files.image.name : "";
     if(!req.files){ imageFile =""; }
     if(req.files){
-    var imageFile = typeof(req.files.image) !== "undefined" ? req.files.image.name : "";
+    let imageFile = typeof(req.files.image) !== "undefined" ? req.files.image.name : "";
     }
 
     req.checkBody('title','Title must have a value').notEmpty();
@@ -199,15 +192,15 @@ router.post('/edit-product/:id',(req,res,next) =>{
     req.checkBody('price','Price must have a value').isDecimal();
     req.checkBody('image', 'You must upload an image').isImage(imageFile);
     
-    var title=req.body.title;
-    var slug=title.replace(/\s+/g,'-').toLowerCase();
-    var desc=req.body.desc;
-    var price=req.body.price;
-    var category=req.body.category;
-    var pimage = req.body.pimage;
-    var id = req.params.id;
+    let title=req.body.title;
+    let slug=title.replace(/\s+/g,'-').toLowerCase();
+    let desc=req.body.desc;
+    let price=req.body.price;
+    let category=req.body.category;
+    let pimage = req.body.pimage;
+    let id = req.params.id;
     
-    var errors=req.validationErrors();
+    let errors=req.validationErrors();
 
     if(errors) {
         req.session.errors = errors;
@@ -240,9 +233,9 @@ router.post('/edit-product/:id',(req,res,next) =>{
                                 });
                             }
 
-                            // var extension = path.extname(imageFile);
-                            var productImage = req.files.image;
-                            var path = 'public/product_images/' + id + '/'  + imageFile;
+                            // let extension = path.extname(imageFile);
+                            let productImage = req.files.image;
+                            let path = 'public/product_images/' + id + '/'  + imageFile;
                             // console.log(imageFile);
 
                              productImage.mv(path, function(err) {
@@ -260,51 +253,10 @@ router.post('/edit-product/:id',(req,res,next) =>{
     }
 });
 
-// POST product gallery
-router.post('/product-gallery/:id',(req,res,next) =>{
-    
-    var productImage = req.files.file;
-    var id = req.params.id;
-    var galleryPath = 'public/product_images/' + id + '/gallery/' + productImage.name;
-    var thumbsPath = 'public/product_images/' + id + '/gallery/thumbs/' + productImage.name;
-
-    productImage.mv(galleryPath, function(err) {
-        if(err) console.log(err);
-
-        resizeImg(fs.readFileSync(galleryPath), {width: 100, height: 100}).then(function(buf) {
-            fs.writeFileSync(thumbsPath, buf);
-        });
-    });
-
-    res.sendStatus(200);
-
-});
-
-// Get delete image
-router.get('/delete-image/:image', isAdmin, (req,res,next) =>{
-    var galleryImage = 'public/product_images/' + req.query.id + '/gallery/' + req.params.image;
-    var thumbsImage = 'public/product_images/' + req.query.id + '/gallery/thumbs/' + req.params.image;
-
-    fs.remove(galleryImage, err => {
-        if(err) {
-            console.log(err);
-        } else {
-            fs.remove(thumbsImage, err => {
-                if(err) {
-                    console.log(err);
-                } else {
-                    req.flash('success','Image deleted!');
-                    res.redirect('/admin/products/edit-product/' + req.query.id);
-                }
-            });
-        }
-    });
-});
-
 // Get delete product
-router.get('/delete-product/:id', isAdmin, (req,res,next) =>{
-    var id = req.params.id;
-    var path = 'public/product_images/' + id;
+router.get('/products/delete-product/:id', isAdmin, (req,res,next) =>{
+    let id = req.params.id;
+    let path = 'public/product_images/' + id;
 
     fs.remove(path, err => {
         if(err) {
