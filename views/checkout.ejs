@@ -39,7 +39,7 @@
           Clear cart
         </a>
         
-        <a class="button--flex button button--small buynow" href="#">
+        <a class="button--flex button button--small buynow" href="#" target="_blank">
           Buy now
         </a>
       </div>
@@ -92,6 +92,10 @@
       $.get('/cart/buynow', () => {
         $('form.pp input[type="image"]').click();
         $('.ajaxbg').show();
+        
+        setTimeout(() => {
+          $('.ajaxbg').hide();
+        }, 4000);
       });
     });
   }); 

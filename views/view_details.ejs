@@ -1,4 +1,22 @@
 <%- include('./layouts/header.ejs') %>
+<div class="product__container">
+  <div class="product__content">
+  <div class="product__bg">
+      <div class="product__title--details"><h1><%= title %></h1></div>
+      <hr>
+      <img class="product__img" src="/portfolio_images/<%= id %>/<%= image %>" alt="">
+      <div class="product__data">
+        <p class="product__description"><%= desc %></p>
+  
+        <div>      
+          <a class="button--flex button button--small" href="/#portfolio">
+            <i class="fa-solid fa-arrow-left"></i> Go back
+          </a>
+        </div>
+    </div>
+  </div>
+  </div>
 
+</div>
 
 <%- include('./layouts/footer.ejs') %>

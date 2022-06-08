@@ -7,6 +7,8 @@
     <!-- CSS -->
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/cart.css">
+    <link rel="stylesheet" href="/css/pDetails.css">
+    <link rel="stylesheet" href="/css/login.css">
     <!-- SWIPER CSS -->
     <link rel="stylesheet" href="/css/swiper.css">
     <!-- GOOGLE FONT -->
@@ -75,7 +77,7 @@
 
           <% if (user && user.admin == 1) { %>
             <li class="nav__item">
-              <a class="nav__link" href="/admin/pages">
+              <a class="nav__link" href="/admin">
                 <i class="fa-solid fa-hammer nav__icon"></i> Admin Area</a>
             </li>
           <% } %>
@@ -100,7 +102,7 @@
     </nav>
   </header>
 
-  <div class="container">
+  <!-- <div class="container">
     <%- messages('messages', locals) %>
 
     <% if(errors) {%>
@@ -110,5 +112,5 @@
        </div>
      <%  }); %>
     <% } %>
-  </div>
+  </div> -->
 
