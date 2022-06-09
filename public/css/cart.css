@@ -68,9 +68,7 @@ hr {
 .checkout__back {
   display: flex;
   justify-content: center;
-  width: 1rem;
   align-content: center;
-  padding: 1rem;
 }
 
 .table__product {
