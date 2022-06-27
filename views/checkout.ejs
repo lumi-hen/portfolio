@@ -33,9 +33,23 @@
       <div class="total">
         <p>Total: <%= parseFloat(total).toFixed(2) %>&euro;</p>
       </div>
+      <!-- MODAL -->
+      <div class="clear__modal" id="clear__modal">
+          <div class="clear__modal-content">
+              <!-- <i class="fas fa-times shop__modal-close"></i> -->
+
+              <ul class="clear__modal-list grid">
+                <li class="clear__modal-service">
+                  <h2>Do you really want to delete your whole cart?</h2>
+                  <a class="button--flex button button--small" href="/cart/clear">Yes</a>
+                  <a class="button--flex button button--small close__clear--modal" href="#">No</a>
+                </li>
+              </ul>
+          </div>
+      </div>
 
       <div class="checkout__buttons">
-        <a class="button--flex button button--small clearcart" href="/cart/clear">
+        <a class="button--flex button button--small clearcart" href="#">
           Clear cart
         </a>
         
@@ -64,6 +78,7 @@
    <input type="hidden" name="cmd" value="_cart">
    <input type="hidden" name="upload" value="1">
    <input type="hidden" name="business" value="sb-7xqb4313068344@business.example.com">
+   <input type="hidden" name="return" value="http://www.localhost:3000">
    <% if (typeof cart !== "undefined") { %>
     <% let num = 0; %> 
     <% cart.forEach(p => { %>
@@ -80,8 +95,12 @@
 
 <script>
   $(function() {
+    const modalClear = document.querySelector(".clear__modal");
     $('a.clearcart').on('click', function() {
-      if(!confirm('Confirm clear cart')) return false;
+      modalClear.classList.add('active-modal');
+    });
+    $('a.close__clear--modal').on('click', function() {
+      modalClear.classList.remove('active-modal');
     });
   }); 
 

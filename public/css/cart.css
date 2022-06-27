@@ -155,6 +155,69 @@ hr {
   margin-top: auto;
 }
 
+/* MODAL */
+
+.clear__modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  z-index: var(--z-modal);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+}
+
+.clear__modal-content {
+  position: relative;
+  background-color: var(--container-clr);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.clear__modal-list {
+  row-gap: 1rem;
+}
+
+.clear__modal-service {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clear__modal-title {
+  font-size: var(--h3-font);
+  font-weight: var(--font-medium);
+  margin-bottom: var(--mb-1-5);
+}
+
+.clear__modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  color: var(--first-clr);
+  cursor: pointer;
+}
+
+.clear__modal-icon {
+  color: var(--first-clr);
+  margin-right: var(--mb-0-5);
+}
+
+/* Active Modal */
+.active-modal {
+  opacity: 1;
+  visibility: visible;
+}
+
 @media screen and (max-width: 360px) {
   .modify,
   .clear__product {
