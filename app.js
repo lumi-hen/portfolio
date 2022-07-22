@@ -11,6 +11,7 @@ const session = require('express-session');
 const expressValidator = require('express-validator');
 const fileUpload = require('express-fileupload');
 const passport = require('passport');
+// const MongoStore = require('connect-mongo');
 // Set routes
 const portfolio = require('./routes/portfolio.js');
 const adminPanel = require('./routes/admin_panel');
@@ -24,7 +25,7 @@ const cart = require('./routes/cart');
 const Category = require('./models/category');
 
 // Connect to db
-mongoose.connect(process.env.DO_LOCAL_PORTFOLIO_DB, {
+mongoose.connect(process.env.LOCAL_PORTFOLIO_DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -76,6 +77,8 @@ app.use(session ({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: false,
+  // store: new MongoStore({ mongooseConnection: mongoose.connection }),
+  // cookie: { maxAge: 180 * 60 * 1000 }
 }));
 
 // Helmet Middleware
@@ -151,7 +154,7 @@ require('./config/passport')(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get('*', (req, res, next) => {
+app.use('*', (req, res, next) => {
     res.locals.cart = req.session.cart;
     res.locals.user = req.user || null;
     next();

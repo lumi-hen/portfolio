@@ -58,7 +58,7 @@
 
           <li class="nav__item">
             <a href="/#shop" class="nav__link">
-              <i class="fas fa-file-alt nav__icon"></i> Shop
+              <i class="fa-solid fa-store nav__icon"></i> Shop
             </a>
           </li>        
 
@@ -70,13 +70,13 @@
 
           <li class="nav__item">
             <a href="/#about" class="nav__link">
-              <i class="far fa-user nav__icon"></i> About
+              <i class="fas fa-user nav__icon"></i> About
             </a>
           </li>
 
           <li class="nav__item">
             <a href="/#contact" class="nav__link">
-              <i class="far fa-envelope nav__icon"></i> Contact
+              <i class="fas fa-envelope nav__icon"></i> Contact
             </a>
           </li>
 
@@ -93,11 +93,30 @@
 
 
       </div>
-        <!-- Theme change button  -->
-        <i class="far fa-moon change-theme" id="theme-button"></i>
+      
+      <!-- Theme change button  -->
+      <!-- <i class="far fa-moon change-theme" id="theme-button"></i> -->
+      <!-- <i class="fa-solid fa-sun-bright change-theme" id="theme-button"></i> -->
+      <i class="fa-solid fa-lightbulb change-theme" id="theme-button"></i>
 
-        <!-- Shopping cart -->
-        <a href="/cart/checkout" class="cart__icon"><i class="fa-lg fa-solid fa-cart-shopping" id="cart-icon"></i></a>
+      <!-- Shopping cart -->
+      <div class="indicator__wrapper">
+        <a href="/cart/checkout" class="cart__icon">
+          <i class="fa-lg fa-solid fa-cart-shopping" id="cart-icon"></i>
+        </a>
+        <span class="quantity__indicator">
+          <% if (cart !== undefined) { %>
+          <% let total = 0; %>
+           <% cart.forEach(element => { %>
+              <% total += element.quantity %>  
+           <% }) %> 
+           <%= total %> 
+          <% } else { %>
+            0  
+          <% } %> 
+        </span>
+      </div>
+
 
         <!-- Nav toggle -->
         <div class="nav__toggle" id="nav-toggle">

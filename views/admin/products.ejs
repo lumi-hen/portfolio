@@ -10,6 +10,7 @@
         <div class="table__title">
           <span>Product</span>
           <span>Price</span>
+          <span>Quantity</span>
           <span>Category</span>
           <span>Image</span>
           <span>Edit</span> 
@@ -21,6 +22,7 @@
             <div class="admin__product">
               <span><%= product.title %></span>
               <span>$<%= parseFloat(product.price).toFixed(2) %></span>
+              <span><%= product.quantity %> </span>
               <span><%= product.category %></span>
               <span>
                 <% if (product.image === "") { %>

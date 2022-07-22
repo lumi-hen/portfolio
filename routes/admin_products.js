@@ -27,10 +27,11 @@ router.get('/products/add-product', isAdmin, (req,res,next) =>{
     let title="";
     let desc="";
     let price="";
+    let quantity;
 
     Category.find(function(err, categories) {
         res.render('admin/add_product',{
-            title,                                                                                                                                                                          
+            title,                                                                                                                                                      quantity,          
             desc,
             categories,
             price,
@@ -54,12 +55,14 @@ router.post('/products/add-product',(req,res,next) =>{
     req.checkBody('desc','Description must have a value').notEmpty();
     req.checkBody('price','Price must have a value').isDecimal();
     req.checkBody('image', 'You must upload an image').isImage(imageFile);
+    req.checkBody('quantity', 'Quantity have a value').isNumeric;
     
     let title=req.body.title;
     let slug=title.replace(/\s+/g,'-').toLowerCase();
     let desc=req.body.desc;
     let price=req.body.price;
     let category=req.body.category;
+    let quantity=req.body.quantity;
     
     let errors=req.validationErrors();
     if(errors)
@@ -70,6 +73,7 @@ router.post('/products/add-product',(req,res,next) =>{
                 title,
                 desc,
                 categories,
+                quantity,
                 price,
             });
         });
@@ -85,6 +89,7 @@ router.post('/products/add-product',(req,res,next) =>{
                     title,
                     desc,
                     categories,
+                    quantity,
                     price,
                 });
             });
@@ -98,6 +103,7 @@ router.post('/products/add-product',(req,res,next) =>{
                  desc,
                  price: price2,
                  category,
+                 quantity,
                  image: imageFile,
              });
 
@@ -165,6 +171,7 @@ router.get('/products/edit-product/:id', isAdmin, (req,res,next) =>{
                             desc: product.desc,
                             categories: categories,
                             category: product.category.replace(/\s+/g, '-').toLowerCase(),
+                            quantity: product.quantity,
                             price: parseFloat(product.price).toFixed(2),
                             image: product.image,
                             galleryImages: galleryImages,
@@ -191,12 +198,14 @@ router.post('/products/edit-product/:id',(req,res,next) =>{
     req.checkBody('desc','Description must have a value').notEmpty();
     req.checkBody('price','Price must have a value').isDecimal();
     req.checkBody('image', 'You must upload an image').isImage(imageFile);
+    req.checkBody('quantity', 'Quantity must be a number').isNumeric();
     
     let title=req.body.title;
     let slug=title.replace(/\s+/g,'-').toLowerCase();
     let desc=req.body.desc;
     let price=req.body.price;
     let category=req.body.category;
+    let quantity=req.body.quantity;
     let pimage = req.body.pimage;
     let id = req.params.id;
     
@@ -220,6 +229,7 @@ router.post('/products/edit-product/:id',(req,res,next) =>{
                     product.slug = slug;
                     product.desc = desc;
                     product.price = parseFloat(price).toFixed(2);
+                    product.quantity = quantity;
                     product.category = category;
                     if(imageFile != "") product.image = imageFile;
 

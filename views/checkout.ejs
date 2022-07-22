@@ -5,7 +5,7 @@
   <div class="checkout__container">
     <div class="table__container">
       <a href="/#shop" class="button--flex button button--small checkout__back"><i class="fa-solid fa-arrow-left fa-lg"></i> Go back</a>
-      <% var total = 0; %>
+      <% var total = 0; %> 
       <% cart.forEach(product => { %>
         <% let sub = parseFloat(product.quantity * product.price).toFixed(2) %>
         <% total += +sub %> 
@@ -37,25 +37,26 @@
       <div class="clear__modal" id="clear__modal">
           <div class="clear__modal-content">
               <!-- <i class="fas fa-times shop__modal-close"></i> -->
-
-              <ul class="clear__modal-list grid">
-                <li class="clear__modal-service">
-                  <h2>Do you really want to delete your whole cart?</h2>
-                  <a class="button--flex button button--small" href="/cart/clear">Yes</a>
-                  <a class="button--flex button button--small close__clear--modal" href="#">No</a>
-                </li>
-              </ul>
+                  <div class="clear__question">
+                    <span class="danger__warning">Do you really want to delete your whole cart?</span>
+                  </div>
+                  <div class="answer__buttons">
+                    <a class="button--flex button button--small" href="/cart/clear">Yes</a>
+                    <a class="button--flex button button--small close__clear--modal" href="#">No</a>
+                  </div>
           </div>
       </div>
 
-      <div class="checkout__buttons">
-        <a class="button--flex button button--small clearcart" href="#">
-          Clear cart
-        </a>
-        
-        <a class="button--flex button button--small buynow" href="#" target="_blank">
-          Buy now
-        </a>
+      <div class="table__product checkout__bg">
+        <div class="checkout__buttons">
+          <a class="button--flex button button--small clearcart" href="#">
+            Clear cart
+          </a>
+          
+          <a class="button--flex button button--small buynow" href="#" target="_blank">
+            Buy now
+          </a>
+        </div>
       </div>
     </div>
   </div>

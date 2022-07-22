@@ -29,6 +29,7 @@ router.get('/', (req, res) => {
             res.render('portfolio', {
               products,
               items,
+              cart: req.session.cart
             });
           }
         });

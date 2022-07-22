@@ -57,8 +57,8 @@ router.get('/add/:product',(req,res,next) =>{
         }
         
         res.sendStatus(204);
-        
     }); 
+    
 });
 
 // Get checkout page

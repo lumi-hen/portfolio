@@ -215,6 +215,25 @@ input[value] {
   color: var(--first-clr);
 }
 
+.indicator__wrapper {
+  position: relative;
+}
+
+.quantity__indicator {
+  position: absolute;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  top: -5px;
+  right: 0;
+  transform: scale(1);
+  background-color: var(--first-clr);
+  color: #fff;  
+  border-radius: 50%;
+  width: 20px;
+  font-size: 14px;
+}
+
 .nav__toggle {
   font-size: 1.1rem;
   cursor: pointer;
@@ -235,6 +254,7 @@ input[value] {
     box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
     border-radius: 1.5rem 1.5rem 0 0;
     transition: 0.3s;
+    z-index: 1;
   }
 
   .cart__content {
@@ -902,6 +922,10 @@ input:-webkit-autofill {
 .scrollup__icon {
   font-size: 1.5rem;
   color: #fff;
+}
+
+.scrollup:hover {
+  transform: scale(1.1cl);
 }
 
 /* SHOW SCROLL UP */

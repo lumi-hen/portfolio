@@ -43,7 +43,7 @@
 
           <li class="nav__item">
             <a href="#shop" class="nav__link">
-              <i class="fas fa-file-alt nav__icon"></i> Shop
+              <i class="fa-solid fa-store nav__icon"></i> Shop
             </a>
           </li>        
 
@@ -55,13 +55,13 @@
 
           <li class="nav__item">
             <a href="#about" class="nav__link">
-              <i class="far fa-user nav__icon"></i> About
+              <i class="fas fa-user nav__icon"></i> About
             </a>
           </li>
 
           <li class="nav__item">
             <a href="#contact" class="nav__link">
-              <i class="far fa-envelope nav__icon"></i> Contact
+              <i class="fas fa-envelope nav__icon"></i> Contact
             </a>
           </li>
 
@@ -77,13 +77,27 @@
       </div>
 
       <!-- Theme change button  -->
-      <i class="far fa-moon change-theme" id="theme-button"></i>
+      <!-- <i class="far fa-moon change-theme" id="theme-button"></i> -->
       <!-- <i class="fa-solid fa-sun-bright change-theme" id="theme-button"></i> -->
+      <i class="fa-solid fa-lightbulb change-theme" id="theme-button"></i>
 
       <!-- Shopping cart -->
-      <a href="/cart/checkout" class="cart__icon">
-        <i class="fa-lg fa-solid fa-cart-shopping" id="cart-icon"></i>
-      </a>
+      <div class="indicator__wrapper">
+        <a href="/cart/checkout" class="cart__icon">
+          <i class="fa-lg fa-solid fa-cart-shopping" id="cart-icon"></i>
+        </a>
+        <span class="quantity__indicator">
+          <% if (cart !== undefined) { %>
+          <% let total = 0; %>
+           <% cart.forEach(element => { %>
+              <% total += element.quantity %>  
+           <% }) %> 
+           <%= total %> 
+          <% } else { %>
+            0  
+          <% } %> 
+        </span>
+      </div>
 
       <!-- Nav toggle -->
       <div class="nav__toggle" id="nav-toggle">
@@ -100,15 +114,15 @@
         <div class="home__content grid">
           <div class="home__social">
             <a href="https://www.instagram.com/lumi_hen" class="home__social-icon" target="_blank">
-              <i class="fab fa-instagram"></i>
+              <i class="fa-brands fa-instagram-square"></i>
             </a>
 
             <a href="https://www.github.com/lumi-hen" class="home__social-icon" target="_blank">
-              <i class="fab fa-github"></i>
+              <i class="fab fa-github-square"></i>
             </a>
 
-            <a href="#" class="home__social-icon" target="_blank">
-              <i class="fab fa-linkedin"></i>
+            <a href="https://www.twitter.com/spruehflasche" class="home__social-icon" target="_blank">
+              <i class="fab fa-twitter-square"></i>
             </a>
           </div>
 
@@ -127,7 +141,7 @@
               A lot of practice, knowledge and the ability to quickly adapt, producing quality work.
             </p>
             <a href="#contact" class="button button--flex contact-me__home">
-             Contact Me <i class="far fa-envelope button__icon"></i> 
+             Contact Me <i class="fas fa-envelope button__icon"></i> 
             </a>
           </div>
         </div>
@@ -167,22 +181,22 @@
 
               <ul class="services__modal-services grid">
                 <li class="services__modal-service">
-                  <i class="far fa-check-circle services__modal-icon"></i>
+                  <i class="fas fa-check-circle services__modal-icon"></i>
                   <p>I do high quality digital illustraions and paintings.</p>
                 </li>
 
                 <li class="services__modal-service">
-                  <i class="far fa-check-circle services__modal-icon"></i>
+                  <i class="fas fa-check-circle services__modal-icon"></i>
                   <p>Stay in touch to meet your expectations.</p>
                 </li>
 
                 <li class="services__modal-service">
-                  <i class="far fa-check-circle services__modal-icon"></i>
+                  <i class="fas fa-check-circle services__modal-icon"></i>
                   <p>Good intuive feeling for asthetics and color.</p>
                 </li>
 
                 <li class="services__modal-service">
-                  <i class="far fa-check-circle services__modal-icon"></i>
+                  <i class="fas fa-check-circle services__modal-icon"></i>
                   <p>I do mock ups for your brand.</p>
                 </li>
               </ul>
@@ -209,22 +223,22 @@
 
               <ul class="services__modal-services grid">
                 <li class="services__modal-service">
-                  <i class="far fa-check-circle services__modal-icon"></i>
+                  <i class="fas fa-check-circle services__modal-icon"></i>
                   <p>I sew all clothes on my own.<p>
                 </li>
 
                 <li class="services__modal-service">
-                  <i class="far fa-check-circle services__modal-icon"></i>
+                  <i class="fas fa-check-circle services__modal-icon"></i>
                   <p>Every piece is fairtrade.</p>
                 </li>
 
                 <li class="services__modal-service">
-                  <i class="far fa-check-circle services__modal-icon"></i>
+                  <i class="fas fa-check-circle services__modal-icon"></i>
                   <p>I only use organic cotton.</p>
                 </li>
 
                 <li class="services__modal-service">
-                  <i class="far fa-check-circle services__modal-icon"></i>
+                  <i class="fas fa-check-circle services__modal-icon"></i>
                   <p>Designs that are interesting and pleasing.</p>
                 </li>
               </ul>
@@ -251,22 +265,22 @@
 
               <ul class="services__modal-services grid">
                 <li class="services__modal-service">
-                  <i class="far fa-check-circle services__modal-icon"></i>
+                  <i class="fas fa-check-circle services__modal-icon"></i>
                   <p>I develop the user interface.</p>
                 </li>
 
                 <li class="services__modal-service">
-                  <i class="far fa-check-circle services__modal-icon"></i>
+                  <i class="fas fa-check-circle services__modal-icon"></i>
                   <p>Web page development.</p>
                 </li>
 
                 <li class="services__modal-service">
-                  <i class="far fa-check-circle services__modal-icon"></i>
+                  <i class="fas fa-check-circle services__modal-icon"></i>
                   <p>I create ux element interactions.</p>
                 </li>
 
                 <li class="services__modal-service">
-                  <i class="far fa-check-circle services__modal-icon"></i>
+                  <i class="fas fa-check-circle services__modal-icon"></i>
                   <p>I position your company brand</p>
                 </li>
               </ul>
@@ -308,7 +322,7 @@
 
               <ul class="shop__modal-shop grid">
                 <li class="shop__modal-service">
-                  <i class="far fa-check-circle shop__modal-icon"></i>
+                  <i class="fas fa-check-circle shop__modal-icon"></i>
                   <p>Added to your cart!</p>
                 </li>
               </ul>
@@ -406,7 +420,7 @@
           <div>
             <a href="/portfolio/contact-me" class="button button--flex send__message">
               Send Message
-              <i class="far fa-envelope button__icon"></i>
+              <i class="fas fa-envelope button__icon"></i>
             </a>
           </div>
         </form>
@@ -447,8 +461,8 @@
             <i class="fab fa-github"></i>
           </a>
 
-          <a href="#" class="footer__social" target="_blank">
-            <i class="fab fa-linkedin"></i>
+          <a href="https://www.twitter.com/spruehflasche" class="footer__social" target="_blank">
+            <i class="fab fa-twitter"></i>
           </a>
         </div>
       </div>

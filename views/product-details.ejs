@@ -1,8 +1,8 @@
 <%- include('./layouts/header.ejs') %>
 <div class="product__container">
   <div class="product__content">
-    <div>      
-      <a style="margin-bottom: 1rem;" class="button--flex button button--small" href="/#shop">
+    <div class="go__back--wrapper">      
+      <a style="margin-bottom: 1rem;" class="button--flex button button--small go__back" href="/#shop">
         <i class="fa-solid fa-arrow-left"></i> Go back
       </a>
     </div>
@@ -13,6 +13,7 @@
       <div class="product__data">
         <h4 id="price" class="product__description"><%= parseFloat(product.price).toFixed(2) %>&euro;</h4>
         <p class="product__description"><%= product.desc %></p>
+        <p class="product__description">Left in stock: <%= product.quantity %> </p>
   
         <div>      
           <a class="button--flex button button--small add__button" href="/cart/add/<%= product.slug %>">
@@ -29,7 +30,7 @@
 
       <ul class="shop__modal-shop grid">
         <li class="shop__modal-service">
-          <i class="far fa-check-circle shop__modal-icon"></i>
+          <i class="fas fa-check-circle shop__modal-icon"></i>
           <p>Added to your cart!</p>
         </li>
       </ul>
